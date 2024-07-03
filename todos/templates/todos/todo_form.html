@@ -1,0 +1,36 @@
+{% extends "base.html" %} 
+
+{% block page_title %}
+    Nova Tarefa
+{% endblock page_title %}
+{% block content %}
+<h1>Nova Tarefa</h1>
+<form method="POST">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label for="{{ form.title.id_for_label }}" class="form-label">Título</label>
+    <input
+      type="text"
+      class="form-control"
+      id="{{ form.title.id_for_label }}"
+      name="{{ form.title.name }}"
+      value="{{ form.title.value|default_if_none:'' }}"
+      required
+    />
+  </div>
+  <div class="mb-3">
+    <label for="{{ form.deadline.id_for_label }}" class="form-label"
+      >Prazo Final</label
+    >
+    <input
+      type="date"
+      class="form-control"
+      id="{{ form.deadline.id_for_label }}"
+      name="{{ form.deadline.name }}"
+      value="{{ form.deadline.value|default_if_none:'' }}"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+{% endblock content %}
