@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% block page_title %}{% endblock page_title %}
+{% block page_title %}
   Lista de Tarefas
+{% endblock page_title %}
 {% block content %}
-<h1>Lista de Tarefas</h1>
+<h1 class="mb-3">Lista de Tarefas</h1>
       <table class="table">
         <thead>
           <tr>
@@ -26,7 +27,8 @@
             <td>{{ todo.finished_at|default:"-"}}</td>
             <td>
               <a href="#" class="btn btn-primary btn-sm">Concluir</a>
-              <a href="#" class="btn btn-danger btn-sm">Excluir</a>
+              <a href="{% url "todo_update" pk=todo.pk %}" class="btn btn-primary btn-sm">Editar</a>
+              <a href="{% url "todo_delete" pk=todo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
             </td>
           </tr>
           {% endfor %}
